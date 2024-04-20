@@ -1,5 +1,5 @@
-node 'file'{ '/tmp/school':
-present => True,
+file { '/tmp/school':
+ensure  => 'present',
 content => 'I love Puppet',
 group   => 'www-data'
 mode    => '0744'
