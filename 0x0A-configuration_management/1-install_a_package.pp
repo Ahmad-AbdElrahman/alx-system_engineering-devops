@@ -9,8 +9,13 @@ package { 'python3-pip':
   require => Package['python3'],
 }
 
+exec { 'install flask':
+  command => '/usr/bin/pip3 install flask -v 2.1.0'
+}
+
+
 package { 'flask':
   ensure  => '2.1.0',
-  before  => Exec['pip3 install flask']
+  before  => Exec['install flask']
   require => Package['python3-pip'],
 }
