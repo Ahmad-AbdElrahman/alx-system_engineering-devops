@@ -5,8 +5,8 @@ package { 'python3':
 }
 
 package { 'python3-pip':
-  ensure   => installed,
-  require  => Package['python3'],
+  ensure  => installed,
+  require => Package['python3'],
 }
 
 package { 'flask':
