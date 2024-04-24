@@ -33,5 +33,5 @@ file_line { 'Set 301 redirection':
   multiple => true,
   line     => $content,
   notify   => Exec['restart nginx'],
-  require  => File['/var/www/html/index.html']
+  require  => File['/var/www/html/index.nginx-debian.html']
 }
