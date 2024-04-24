@@ -6,8 +6,8 @@
 # 'Hello world!'.
 #
 
-link="https://www.youtube.com/"
-new_conf="server_name _;\n\trewrite ^/redirect_me/$ $link permanent;"
+link="https://www.youtube.com/watch?v=QH2-TGUlwu4"
+new_conf="server_name _;\nlocation /redirectme {\n return 301 $link;\n}"
 
 apt update
 apt install -y nginx
