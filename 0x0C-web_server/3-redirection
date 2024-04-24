@@ -12,6 +12,6 @@ new_conf="server_name _;\n\trewrite ^/redirect_me/$ $link permanent;"
 apt update
 apt install -y nginx
 ufw allow 'Nginx HTTP'
-echo "Hello World!" > index.nginx-debian.html
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
 sed -i "s|server_name\ _;|$new_conf|" /etc/nginx/sites-available/default
 service nginx restart
