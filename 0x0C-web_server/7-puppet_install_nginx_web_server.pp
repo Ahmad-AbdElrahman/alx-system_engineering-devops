@@ -18,9 +18,9 @@ package { 'nginx':
   require => Exec['update packages']
 }
 
-file { '/var/www/html/index.html':
+file { '/var/www/html/index.nginx-debian.html':
   ensure  => 'present',
-  content => 'Holberton School',
+  content => 'Hello World!',
   mode    => '0644',
   owner   => 'root',
   group   => 'root'
