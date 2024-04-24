@@ -7,7 +7,7 @@
 #
 
 link="https://www.youtube.com/watch?v=QH2-TGUlwu4"
-new_conf="server_name _;\nlocation /redirectme {\n return 301 $link;\n}"
+new_conf="server_name _;\nlocation /redirectme {\n return 301 $link;\n}\nerror_page 404 /404.html;"
 
 apt update
 apt install -y nginx
