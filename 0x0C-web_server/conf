@@ -1,0 +1,8 @@
+http {
+	server {
+		listen 80;
+		server_name 54.80.218.139;
+		location /redirect_me {
+			return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+			}
+	}
