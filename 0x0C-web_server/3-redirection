@@ -7,7 +7,7 @@
 #
 
 
-new_conf="http {\n\tserver {\n\t\tlisten 80;\n\t\tserver_name localhost;\n\t\tlocation /redirect_me {\n\t\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t\t\t}\n\t}"
+new_conf="http {\n\tserver {\n\t\tlisten 80;\n\t\tserver_name 54.80.218.139;\n\t\tlocation /redirect_me {\n\t\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t\t\t}\n\t}"
 
 apt update
 apt install -y nginx

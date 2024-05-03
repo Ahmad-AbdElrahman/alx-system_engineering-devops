@@ -6,14 +6,12 @@
 # 'Hello world!'.
 #
 
-link="https://www.youtube.com/watch?v=QH2-TGUlwu4"
-new_conf="server_name _;\nlocation /redirectme {\n return 301 $link;\n}\nerror_page 404 /404.html;"
+new_conf="http {\n\tserver {\n\t\tlisten 80;\n\t\tserver_name 54.80.218.139;\n\t\tlocation /redirect_me {\n\t\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t\t\t}\n\t}\n\t\terror_page 404 /404.html;"
 
 apt update
 apt install -y nginx
 ufw allow 'Nginx HTTP'
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
-echo "Ceci n'est pas une page" > usr/share/nginx/html/404.html
-sed -i "s/server_name/ _;/$new_conf/" /etc/nginx/sites-available/default
+sed -i "s|http {|$new_conf|" /etc/nginx/nginx.conf
 
 service nginx restart
