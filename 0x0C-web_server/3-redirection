@@ -13,5 +13,5 @@ apt update
 apt install -y nginx
 ufw allow 'Nginx HTTP'
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
-sed -i "s|http {|$new_conf|" ./conf #/etc/nginx/nginx.conf
+sed -i "s|http {|$new_conf|" /etc/nginx/nginx.conf
 service nginx restart
