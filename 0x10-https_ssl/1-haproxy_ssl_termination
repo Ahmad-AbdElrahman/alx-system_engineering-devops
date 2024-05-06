@@ -41,7 +41,7 @@ frontend http
 	bind *:80
 
 	# This is our new config that listens on port 443 for SSL connections
-	bind *:443 ssl crt /etc/letsencrypt/live/ahassanprog.tech/privkey.pem
+	bind *:443 ssl crt ssl crt /etc/haproxy/certs/www.ahassanprog.tech.pem
 
 	# Test URI to see if its a letsencrypt request	
 	acl letsencrypt-acl path_beg /.well-known/acme-challenge/
@@ -58,5 +58,5 @@ backend letsencrypt-backend
 # for web apps
 backend web-backend
 	balance roundrobin
-	server web-01 35.229.93.37:80 check
-	server web-02 54.196.213.127:80 check
+	server web-01 54.80.218.139 check
+	server web-02 54.157.155.123:80 check
