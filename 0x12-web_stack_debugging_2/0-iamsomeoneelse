@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Who is the user
+
+currentuser=$(whoami)
+su "$1"
+whoami
+su $currentuser
