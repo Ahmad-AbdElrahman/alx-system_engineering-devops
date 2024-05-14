@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Set a shell for a desired user and start nginx
+
+chown nginx:nginx /etc/nginx/nginx.conf
+chown nginx u+rx /etc/nginx/nginx.conf
+su nginx
+service nginx start
