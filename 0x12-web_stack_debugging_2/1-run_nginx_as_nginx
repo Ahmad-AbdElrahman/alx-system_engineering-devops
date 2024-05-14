@@ -1,7 +1,21 @@
 #!/usr/bin/env bash
-# Set a shell for a desired user and start nginx
+# Run nginx as the nginx user
 
+# If port 80 for IPv4 is being listened to, it is changed to port 8080
+if grep -q "listen 80" /etc/nginx/sites-available/default ; then
+    sed -i "s/listen 80/listen 8080/" /etc/nginx/sites-available/default
+fi
+
+# If port 80 for IPv6 is being listened to, it is changed to port 8080
+if grep -q "listen \[::\]:80" /etc/nginx/sites-available/default ; then
+    sed -i "s/listen \[::\]:80/listen \[::\]:8080/" /etc/nginx/sites-available/default
+fi
+
+# Update Nginx settings file owner and group
 chown nginx:nginx /etc/nginx/nginx.conf
-chown nginx u+rx /etc/nginx/nginx.conf
-su nginx
-service nginx start
+
+# Update Nginx settings file permissions
+chmod 0644 /etc/nginx/nginx.conf
+
+# Start the nginx service as the nginx user
+su nginx -c "service nginx start"

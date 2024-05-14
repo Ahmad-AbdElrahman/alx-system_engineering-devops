@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# Set a shell for a desired user and start nginx
-
-chown nginx:nginx /etc/nginx/nginx.conf
-chown nginx u+rx /etc/nginx/nginx.conf
-su nginx
-service nginx start
+# Run nginx as the nginx user
+sed -i "s/listen 80/listen 8080/" /etc/nginx/sites-available/default
+sed -i "s/listen \[::\]:80/listen \[::\]:8080/" /etc/nginx/sites-available/default
+chmod 0644 /etc/nginx/nginx.conf
+su nginx -c "service nginx start"
