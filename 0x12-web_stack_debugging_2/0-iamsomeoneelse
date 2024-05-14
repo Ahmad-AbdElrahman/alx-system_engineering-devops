@@ -1,10 +1,19 @@
 #!/usr/bin/env bash
-# Set a shell for a desired user
-# and execute the "whoami" command
-#
+# Set the shell for a desired user to Bash
+# and execute the "whoami" command as that user
 
 user="$1"
 
-if [ "$user" ] ; then
-    chsh -s "$(which bash)" "$user" && su "$user" -c "whoami"
+if [ -z "$user" ]; then
+    echo "Usage: $0 <username>"
+    exit 1
+fi
+
+# Attempt to set the shell to Bash for the specified user
+if chsh -s "$(command -v bash)" "$user"; then
+    # If successful, execute "whoami" as the user
+    su "$user" -c "whoami"
+else
+    echo "Failed to set shell for user $user"
+    exit 1
 fi
