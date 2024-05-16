@@ -2,10 +2,15 @@
 # Generates a MySQL dump with all databases
 # and creates a compressed archive out of it.
 
+DB_USER="root"
+DB_NAME="tyrellcorp"
+BACKUP_DIR="."
+
 if [ "$1" ] ; then
-    touch .mylogin.cnf
-    printf "[client]\nuser = %s\npassword = %s" "root" "$1" >> .mylogin.cnf
-    chmod 600 .mylogin.cnf
-    mysqldump --defaults-extra-file=.mylogin.cnf --all-databases > backup.sql
-    tar -czvf "$(date '+%d-%m-%Y').tar.gz" backup.sql
+mysqldump -u "$DB_USER" -p"$1" "$DB_NAME" > "$BACKUP_DIR/backup.sql"
+tar -czf "$BACKUP_DIR/$(date +%Y%m%d%H%M%S).tar.gz" "$BACKUP_DIR/backup.sql"
+chmod 700 "$BACKUP_DIR"
+chmod 600 "$BACKUP_DIR/backup.sql" "$BACKUP_DIR/*.tar.gz"
+else;
+echo "Please enter your password"
 fi
