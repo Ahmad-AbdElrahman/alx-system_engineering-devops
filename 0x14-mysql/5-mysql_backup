@@ -3,7 +3,7 @@
 # and creates a compressed archive out of it.
 
 DB_USER="root"
-DB_NAME="tyrellcorp"
+DB_NAME="tyrell_corp"
 BACKUP_DIR="."
 
 if [ "$1" ] ; then
