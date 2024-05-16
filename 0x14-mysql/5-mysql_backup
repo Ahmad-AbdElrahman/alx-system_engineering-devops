@@ -3,11 +3,10 @@
 # and creates a compressed archive out of it.
 
 DB_USER="root"
-DB_NAME="tyrell_corp"
 BACKUP_DIR="."
 
 if [ "$1" ] ; then
-    mysqldump -u "$DB_USER" -p"$1" "$DB_NAME" > "$BACKUP_DIR/backup.sql"
+    sudo mysqldump -u "$DB_USER" -p"$1" --all-databases > "$BACKUP_DIR/backup.sql"
     tar -czf "$BACKUP_DIR/$(date '+%d-%m-%Y').tar.gz" "$BACKUP_DIR/backup.sql"
     chmod 700 "$BACKUP_DIR"
 else
